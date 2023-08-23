@@ -18,3 +18,4 @@ jobs:
         script: |
             cd /home/ubuntu/JavaScript-Projects-for-Beginners/Temperature-converter
             git pull origin master
+            echo "Done"
