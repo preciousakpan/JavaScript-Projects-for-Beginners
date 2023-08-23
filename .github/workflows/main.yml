@@ -1,1 +1,20 @@
-
+name: CICD pipeline
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+    
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+     - name: SSH into EC2 Instance
+       uses: appleboy/ssh-action@master
+       with: 
+        host: ${{ secrets.IP_ADDRESS }}
+        username: ${{ secrets.MY_USERNAME }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        script: |
+            cd /home/ubuntu/JavaScript-Projects-for-Beginners/Temperature-converter
+            git pull origin master
